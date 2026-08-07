@@ -1,7 +1,12 @@
 #Blacky Assisstant v0.2.0
 import tkinter as tk
 import tkinter
-
+def clear_screen():
+    for widget in window.winfo_children():
+        widget.destroy()
+def home():
+    clear_screen()
+    startba()
 def calculator():
     global button_calculator
     button_calculator.destroy()
@@ -61,6 +66,7 @@ def calculator():
     button_div.place(x=270, y=220)
     text_answer.place(x=200, y=300)
 
+
 def startba():
     global button_notes
     global button_information
@@ -75,6 +81,8 @@ def startba():
     button_information.place(x=300,y=100)
     button_terminal = tk.Button(window,text="Terminal",width=10,bg="black",fg="white")
     button_terminal.place(x=400,y=100)
+    button_exit = tk.Button(window, text="Home", width=10, bg="black", fg="white", command=home)
+    button_exit.place(x=200, y=500)
 
 window = tk.Tk()
 window.title("Blacky Assisstant")
@@ -83,9 +91,8 @@ label_blackyassisstant = tk.Label(window, text="Blacky Assisstant")
 label_blackyassisstant.place(x=200, y=10)
 label_welcome = tk.Label(window, text="Welcome to Blacky Assisstant")
 label_welcome.place(x=170, y=50)
-button_start = tk.Button(window,text="Start BA v0.2.0",bg="black",fg="white",command=startba)
+button_start = tk.Button(window,text="Start Blacky Assisstant v0.2.0",bg="black",fg="white",command=startba)
 button_start.place(x=200, y=250)
-
 
 
 
