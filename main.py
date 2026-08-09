@@ -1,5 +1,5 @@
 
-#Blacky Assisstant v0.2.0
+#Blacky Assisstant v0.3.2
 import tkinter as tk
 import tkinter
 def clear_screen():
