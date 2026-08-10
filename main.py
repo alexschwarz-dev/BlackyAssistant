@@ -85,7 +85,7 @@ def information():
     button_informations.destroy()
     info_window = tk.Toplevel()
     info_window.title("Blacky Assisstant - Information")
-    info_window.geometry("600x600")
+    info_window.geometry("570x700")
     system_info = f"""
 BLACKY ASSISSTANT
 ===============================
@@ -127,7 +127,7 @@ Disk Free: {round(psutil.disk_usage('/').free / (1024**3), 2)} GB
         text=system_info,
         justify="left",
         font=("Consolas", 11),
-        bg="white",
+        bg="black",
         fg="green"
     )
 
@@ -147,7 +147,7 @@ def startba():
     button_notes = tk.Button(window,text="Notes",width=10,bg="black",fg="white")
     button_notes.place(x=200,y=100)
     button_informations = tk.Button(window,text="Information",width=10,bg="black",fg="white",command=information)
-    button_informations.place(x=300,y=300)
+    button_informations.place(x=300,y=100)
     button_terminal = tk.Button(window,text="Terminal",width=10,bg="black",fg="white")
     button_terminal.place(x=400,y=100)
     button_exit = tk.Button(window, text="Home", width=10, bg="black", fg="white", command=home)
