@@ -8,6 +8,7 @@ import psutil
 import socket
 import sys
 import shutil
+import subprocess
 def clear_screen():
     for widget in window.winfo_children():
         widget.destroy()
@@ -85,7 +86,11 @@ def information():
     button_informations.destroy()
     info_window = tk.Toplevel()
     info_window.title("Blacky Assisstant - Information")
-    info_window.geometry("570x700")
+    info_window.geometry("570x720")
+    gpu_info = subprocess.check_output(
+        ["powershell", "-Command", "Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name"],
+        text=True
+    ).strip()
     system_info = f"""
 BLACKY ASSISSTANT
 ===============================
@@ -112,6 +117,7 @@ Processor: {platform.processor()}
 CPU Usage: {psutil.cpu_percent()}%
 RAM: {round(psutil.virtual_memory().total / (1024**3), 2)} GB
 RAM Usage {psutil.virtual_memory().percent}%
+GPU: {gpu_info}
 
 STORAGE
 ===============================
