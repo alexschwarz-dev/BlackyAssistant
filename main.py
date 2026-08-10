@@ -74,6 +74,10 @@ def calculator():
     text_answer.place(x=200, y=300)
 
 def information():
+    button_calculator.destroy()
+    button_notes.destroy()
+    button_terminal.destroy()
+    button_information.destroy()
     info_window = tk.Toplevel()
     info_window.title("Blacky Assisstant - Information")
     info_window.geometry("600x600")
@@ -90,8 +94,32 @@ Python: {platform.python_version()}
 SYSTEM INFO
 ===============================
 
-"""
+Operating System: {platform.system()}
+OS Version: {platform.version()}
+Kernel: {platform.release()}
+Architecture: {platform.machine()}
+Hostname: {socket.gethostname()}
 
+HARDWARE INFO
+===============================
+
+Processor: {platform.processor()}
+CPU Usage: {psutil.cpu_percent()}%
+RAM: {round(psutil.virtual_memory().total / (1024**3), 2)} GB
+RAM Usage {psutil.virtual_memory().percent}%
+
+STORAGE
+===============================
+
+Disk Total: {round(psutil.disk_usage('/').total / (1024**3), 2)} GB
+Disk Usage {psutil.disk_usage('/').percent}%
+Disk Used: {round(psutil.disk_usage('/').used / (1024**3), 2)} GB
+Disk Free: {round(psutil.disk_usage('/').free / (1024**3), 2)} GB
+
+"""
+    label_systeminfo = tk.Label(info_window,text=system_info,justify="left",font="Consolas",bg="white",fg="green")
+    label_systeminfo.pack(padx=20, pady=20, anchor="w")
+    label_systeminfo.place(x=10,y=10)
 def startba():
     global button_notes
     global button_information
