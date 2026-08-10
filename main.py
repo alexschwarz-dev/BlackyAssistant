@@ -2,6 +2,12 @@
 #Blacky Assisstant v0.3.2
 import tkinter as tk
 import tkinter
+import os
+import platform
+import psutil
+import socket
+import sys
+import shutil
 def clear_screen():
     for widget in window.winfo_children():
         widget.destroy()
@@ -67,6 +73,24 @@ def calculator():
     button_div.place(x=270, y=220)
     text_answer.place(x=200, y=300)
 
+def information():
+    info_window = tk.Toplevel()
+    info_window.title("Blacky Assisstant - Information")
+    info_window.geometry("600x600")
+    system_info = f"""
+BLACKY ASSISSTANT
+===============================
+
+BLACKY ASSISSTANT INFORMATION
+VERSION: 0.4.0
+STATUS: Running
+GUI: Tkinter
+Python: {platform.python_version()}
+
+SYSTEM INFO
+===============================
+
+"""
 
 def startba():
     global button_notes
@@ -78,7 +102,7 @@ def startba():
     button_calculator.place(x=100,y=100)
     button_notes = tk.Button(window,text="Notes",width=10,bg="black",fg="white")
     button_notes.place(x=200,y=100)
-    button_information = tk.Button(window,text="Information",width=10,bg="black",fg="white")
+    button_information = tk.Button(window,text="Information",width=10,bg="black",fg="white",command=information)
     button_information.place(x=300,y=100)
     button_terminal = tk.Button(window,text="Terminal",width=10,bg="black",fg="white")
     button_terminal.place(x=400,y=100)
