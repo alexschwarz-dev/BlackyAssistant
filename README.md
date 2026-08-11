@@ -58,7 +58,7 @@ Blacky Assistant also displays information about itself:
 Clone the repository:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/blackySascha/BlackyAssisstant
 cd BlackyAssistant
 ```
 
