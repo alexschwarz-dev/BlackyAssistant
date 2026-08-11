@@ -1,4 +1,5 @@
-
+#I have no clue how I wrote that code
+total_hours_wasted = 7
 #Blacky Assisstant v0.3.2
 import tkinter as tk
 import tkinter
