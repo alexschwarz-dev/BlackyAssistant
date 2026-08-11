@@ -15,7 +15,11 @@ def clear_screen():
 def home():
     clear_screen()
     startba()
+
 def calculator():
+    window_calculator = tk.Toplevel()
+    window_calculator.title("Calculator")
+    window_calculator.geometry("500x500")
     global button_calculator
     button_calculator.destroy()
     global button_notes
@@ -53,16 +57,16 @@ def calculator():
         num2 = get_num2()
         result = num1 / num2
         set_answer(result)
-    button_add = tkinter.Button(window, text="+", command=add, width=10, height=2, bg="gold")
-    button_sub = tkinter.Button(window, text="-", command=sub, width=10, height=2, bg="gold")
-    button_mul = tkinter.Button(window, text="*", command=mul, width=10, height=2, bg="gold")
-    button_div = tkinter.Button(window, text="/", command=div, width=10, height=2, bg="gold")
-    text_num1 = tkinter.Entry(window, width=24, bg="black", fg="gold")
-    text_num2 = tkinter.Entry(window, width=24, bg="black", fg="gold")
-    text_answer = tkinter.Entry(window, width=24, bg="black", fg="gold")
-    label_num1 = tkinter.Label(window, text="Enter the first number",width=20, background="silver")
-    label_num2 = tkinter.Label(window, text="Enter the second number",width=20, background="silver")
-    label_answer = tkinter.Label(window, text="Operation result:",width=20, background="silver")
+    button_add = tkinter.Button(window_calculator, text="+", command=add, width=10, height=2, bg="gold")
+    button_sub = tkinter.Button(window_calculator, text="-", command=sub, width=10, height=2, bg="gold")
+    button_mul = tkinter.Button(window_calculator, text="*", command=mul, width=10, height=2, bg="gold")
+    button_div = tkinter.Button(window_calculator, text="/", command=div, width=10, height=2, bg="gold")
+    text_num1 = tkinter.Entry(window_calculator, width=24, bg="black", fg="gold")
+    text_num2 = tkinter.Entry(window_calculator, width=24, bg="black", fg="gold")
+    text_answer = tkinter.Entry(window_calculator, width=24, bg="black", fg="gold")
+    label_num1 = tkinter.Label(window_calculator, text="Enter the first number",width=20, background="silver")
+    label_num2 = tkinter.Label(window_calculator, text="Enter the second number",width=20, background="silver")
+    label_answer = tkinter.Label(window_calculator, text="Operation result:",width=20, background="silver")
     label_num1.place(x=200, y=80)
     label_num2.place(x=200, y=120)
     label_answer.place(x=200, y=280)
@@ -75,7 +79,6 @@ def calculator():
     text_answer.place(x=200, y=300)
 
 def information():
-    print("Information button works")
     global button_notes
     global button_informations
     global button_terminal
@@ -86,7 +89,9 @@ def information():
     button_informations.destroy()
     info_window = tk.Toplevel()
     info_window.title("Blacky Assisstant - Information")
-    info_window.geometry("570x720")
+    info_window.geometry("490x720")
+    button_homeee = tkinter.Button(info_window, text="HOME", width=10, bg="white", fg="black",command=info_window.destroy)
+    button_homeee.place(x=0, y=0)
     gpu_info = subprocess.check_output(
         ["powershell", "-Command", "Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name"],
         text=True
@@ -138,11 +143,14 @@ Disk Free: {round(psutil.disk_usage('/').free / (1024**3), 2)} GB
     )
 
     label_systeminfo.pack(
-        padx=20,
-        pady=20,
+        padx=0,
+        pady=(20,0),
         anchor="w"
     )
+
 def startba():
+    button_knock = tk.Button(window,text="KNOCKOUT",bg="red",fg="black",command=window.destroy)
+    button_knock.place(x=200,y=450)
     global button_notes
     global button_informations
     global button_terminal
@@ -159,6 +167,7 @@ def startba():
     button_exit = tk.Button(window, text="Home", width=10, bg="black", fg="white", command=home)
     button_exit.place(x=200, y=500)
 
+
 window = tk.Tk()
 window.title("Blacky Assisstant")
 window.geometry("600x600")
@@ -168,9 +177,6 @@ label_welcome = tk.Label(window, text="Welcome to Blacky Assisstant")
 label_welcome.place(x=170, y=50)
 button_start = tk.Button(window,text="Start Blacky Assisstant v0.2.0",bg="black",fg="white",command=startba)
 button_start.place(x=200, y=250)
-
-
-
 
 
 
