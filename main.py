@@ -84,6 +84,25 @@ def notes():
     print("Notes button working")
 def terminal():
     print("Terminal button working")
+    terminal_window = tk.Toplevel(window)
+    terminal_window.title("Blacky Terminal")
+    terminal_window.geometry("600x600")
+    output = tk.Text(terminal_window, bg="black",fg="green",insertbackground="white")
+    output.pack(fill="both",expand=True)
+    command_entry=tk.Entry(terminal_window,bg="black",fg="white",insertbackground="white")
+    command_entry.pack(fill="x")
+    def run_command():
+        command = command_entry.get()
+        if not command:
+            return
+        try:
+            result = subprocess.run(command,shell=True,capture_output=True,text=True)
+            output.insert("end",f">{command}\n")
+            output.insert("end", result.stdout)
+            output.insert("end", result.stderr)
+        except Exception as e:
+            output.insert("end",f"Error: {e}\n")
+    button_run = tk
 def information():
     global button_notes
     global button_informations
