@@ -79,7 +79,10 @@ def calculator():
     text_answer.place(x=200, y=300)
     button_homee = tkinter.Button(window_calculator, text="HOME", width=10, bg="white", fg="black",command=window_calculator.destroy)
     button_homee.place(x=0, y=0)
-
+def notes():
+    print("Notes button working")
+def terminal():
+    print("Terminal button working")
 def information():
     global button_notes
     global button_informations
@@ -160,11 +163,11 @@ def startba():
     button_start.destroy()
     button_calculator = tk.Button(window,text="Calculator",width=10,bg="black",fg="white",command=calculator)
     button_calculator.place(x=100,y=100)
-    button_notes = tk.Button(window,text="Notes",width=10,bg="black",fg="white")
+    button_notes = tk.Button(window,text="Notes",width=10,bg="black",fg="white",command=notes)
     button_notes.place(x=200,y=100)
     button_informations = tk.Button(window,text="Information",width=10,bg="black",fg="white",command=information)
     button_informations.place(x=300,y=100)
-    button_terminal = tk.Button(window,text="Terminal",width=10,bg="black",fg="white")
+    button_terminal = tk.Button(window,text="Terminal",width=10,bg="black",fg="white",command=terminal)
     button_terminal.place(x=400,y=100)
     button_exit = tk.Button(window, text="Home", width=10, bg="black", fg="white", command=home)
     button_exit.place(x=200, y=500)
