@@ -77,6 +77,8 @@ def calculator():
     button_mul.place(x=200, y=220)
     button_div.place(x=270, y=220)
     text_answer.place(x=200, y=300)
+    button_homee = tkinter.Button(window_calculator, text="HOME", width=10, bg="white", fg="black",command=window_calculator.destroy)
+    button_homee.place(x=0, y=0)
 
 def information():
     global button_notes
