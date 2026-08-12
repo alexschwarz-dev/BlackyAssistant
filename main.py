@@ -1,5 +1,5 @@
 #I have no clue how I wrote that code
-total_hours_wasted = 7
+total_hours_wasted = 10
 #Blacky Assisstant v0.3.2
 import tkinter as tk
 import tkinter
@@ -102,8 +102,36 @@ def terminal():
             output.insert("end", result.stderr)
         except Exception as e:
             output.insert("end",f"Error: {e}\n")
-    button_run = tk
+    button_run = tk.Button(terminal_window,text="Run",bg="black",fg="white",command=run_command)
+    button_run.pack()
+    button_homee = tkinter.Button(terminal_window, text="HOME", width=10, bg="white", fg="black",command=terminal_window.destroy)
+    button_homee.pack()
+def get_gpu_info():
+    try:
+        if platform.system() == "Windows":
+            return subprocess.check_output(
+                [
+                    "powershell",
+                    "-Command",
+                    "Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name"
+                ],
+                text=True
+            ).strip()
+
+        elif platform.system() == "Linux":
+            return subprocess.check_output(
+                ["bash", "-c", "lspci | grep -Ei 'VGA|3D|Display'"],
+                text=True
+            ).strip()
+
+        else:
+            return "Unknown"
+
+    except Exception as e:
+        return f"GPU information unavailable: {e}"
 def information():
+
+    gpu_info = get_gpu_info()
     global button_notes
     global button_informations
     global button_terminal
@@ -114,13 +142,10 @@ def information():
     button_informations.destroy()
     info_window = tk.Toplevel()
     info_window.title("Blacky Assisstant - Information")
-    info_window.geometry("490x720")
+    info_window.geometry("900x720")
     button_homeee = tkinter.Button(info_window, text="HOME", width=10, bg="white", fg="black",command=info_window.destroy)
     button_homeee.place(x=0, y=0)
-    gpu_info = subprocess.check_output(
-        ["powershell", "-Command", "Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name"],
-        text=True
-    ).strip()
+
     system_info = f"""
 BLACKY ASSISSTANT
 ===============================
