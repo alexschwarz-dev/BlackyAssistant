@@ -3,12 +3,9 @@ total_hours_wasted = 11
 #Blacky Assisstant v0.3.2
 import tkinter as tk
 import tkinter
-import os
 import platform
 import psutil
 import socket
-import sys
-import shutil
 import subprocess
 def clear_screen():
     for widget in window.winfo_children():
