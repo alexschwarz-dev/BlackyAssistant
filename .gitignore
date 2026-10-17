@@ -17,3 +17,10 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+

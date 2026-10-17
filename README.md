@@ -1,137 +1,109 @@
-# 🖤 Blacky Assistant
+# Blacky Assistant
 
-Blacky Assistant is a Python desktop assistant project built with **Tkinter**.
+A personal Python learning project with a Tkinter desktop interface: a calculator,
+local system information and a basic command runner.
 
-The project is currently under active development and is being used to learn
-and improve skills in **Python, GUI development, system information, and
-software development**.
+**Status:** early prototype. The displayed application version is **v0.4.0**.
+There are no published releases. This is not a production-ready assistant.
 
-## 🚀 Current Version
+## Functionality
 
-**v0.4.0**
+| Component | Current implementation |
+| --- | --- |
+| Calculator | Addition, subtraction, multiplication and division of two integer inputs. Division may return a decimal result. |
+| System information | OS, Python version, hostname, processor, CPU usage, memory and disk usage. Values are collected when the view opens. |
+| GPU information | Queries PowerShell on Windows or `lspci` on Linux. Other systems return `Unknown`. |
+| Command runner | Runs a local shell command and displays standard output and error output after it finishes. |
+| Notes | Placeholder only; no editor or saved notes. |
 
-## ✨ Features
+## Requirements
 
-### 🧮 Calculator
+- Python 3 with Tkinter and a graphical desktop session.
+- `psutil`, as declared in `requirements.txt`.
+- For GPU detection: PowerShell on Windows; Bash, `lspci` and `grep` on Linux.
 
-- Addition
-- Subtraction
-- Multiplication
-- Division
-- Simple graphical interface
+Tkinter may require a separate operating-system package on Linux. GPU detection
+is platform-specific; compatibility with every operating system is not claimed.
 
-### 🖥️ System Information
+## Installation and launch
 
-Blacky Assistant can display information about the computer it is running on:
-
-- Operating system, version, kernel, architecture, and hostname
-- Processor and CPU usage
-- GPU information
-- RAM capacity and usage
-- Storage capacity, usage, and free space
-- Python version
-
-### 🖤 Blacky Assistant Information
-
-Blacky Assistant also displays its current version, running status, GUI
-framework, and Python version.
-
-### Terminal
-
-Blacky Assistant includes a basic graphical terminal that displays the standard
-output and error output of commands.
-
-## 🛠️ Technologies
-
-- Python 3
-- Tkinter
-- psutil
-- PowerShell on Windows for GPU detection
-- `lspci` on Linux for GPU detection
-
-## 📦 Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/blackySascha/BlackyAssisstant
+```sh
+git clone https://github.com/alexschwarz-dev/BlackyAssisstant.git
 cd BlackyAssisstant
 ```
 
-Create and activate a virtual environment, then install the dependencies:
+Create a virtual environment and use its Python executable directly. Activation
+is not required for these commands.
 
-```bash
+### Windows (PowerShell)
+
+```powershell
 python -m venv .venv
-python -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe main.py
 ```
 
-Run Blacky Assistant:
+### Linux
 
-```bash
-python main.py
+```sh
+python3 -m venv .venv
+./.venv/bin/python -m pip install -r requirements.txt
+./.venv/bin/python main.py
 ```
 
-## 💻 Requirements
+## Usage and limitations
 
-- Python 3.x
-- Tkinter
-- Dependencies listed in `requirements.txt`
-- PowerShell on Windows or `lspci` on Linux for GPU detection
+Select **Start Blacky Assistant**, then choose a component. Closing a calculator
+or information window does not restore the menu buttons automatically; use
+**Home** in the main window to rebuild the menu.
 
-## 📁 Project Structure
+- The calculator does not yet handle invalid input or division by zero in the UI.
+- System values are snapshots, not continuous monitoring.
+- Commands run synchronously, so a long-running command can block the interface.
+- The command runner is not an interactive terminal: interactive input and a
+  persistent shell session are not implemented.
+- Commands execute with the current user's permissions via `shell=True`. They
+  can modify files and run programs. Only enter commands you understand and trust.
+- Hostnames and command output may contain personal information. Check them
+  before sharing screenshots or logs.
+
+## Repository structure
 
 ```text
 BlackyAssisstant/
-├── main.py
-├── README.md
-├── requirements.txt
-└── tests/
+|-- main.py                       # Interface and application logic
+|-- requirements.txt              # Third-party runtime dependency
+|-- README.md
+|-- .gitattributes
+|-- .gitignore
+`-- tests/
+    `-- test_project_metadata.py  # Setup and documentation checks
 ```
 
-## Tests
+The repository path retains its existing spelling; the displayed project name
+is **Blacky Assistant**.
 
-Run the metadata and documentation checks with Python's standard test runner:
+## Checks
 
-```bash
+Using the virtual environment's Python executable, run:
+
+```sh
 python -m unittest discover -s tests
+python -m py_compile main.py
 ```
 
-The current tests intentionally do not import `main.py`, because importing it
-starts the Tkinter interface. Application-logic tests can be added after the UI
-startup and feature logic are separated without changing user-facing behavior.
+Replace `python` with `.\.venv\Scripts\python.exe` on Windows or
+`./.venv/bin/python` on Linux when the environment is not activated.
+The existing tests cover project metadata only. They do not establish GUI
+correctness, calculator correctness or cross-platform compatibility. Importing
+`main.py` currently starts the interface, so the tests do not import it.
 
-## 🗺️ Roadmap
+## Possible next steps
 
-### v0.4.x
+- Separate interface startup from application logic to make behavior testable.
+- Add calculator input validation and clearer error messages.
+- Keep navigation available while component windows are open.
+- Run commands without blocking the interface and define cancellation behavior.
+- Implement a notes editor before presenting Notes as an available feature.
 
-- [x] Calculator
-- [x] System information
-- [x] Hardware information
-- [x] GPU detection
-- [x] Basic terminal
-- [ ] Notes
-
-### Future
-
-- [ ] Live CPU and GPU monitoring
-- [ ] VRAM information
-- [ ] Update checker
-- [ ] Settings
-- [ ] Improved GUI
-- [ ] More assistant features
-- [ ] Notepad
-
-## 📌 Development Status
-
-Blacky Assistant is currently a **work in progress**. New features, improvements,
-and changes will be added over time.
-
-## 👤 Author
-
-**Blacky**
-
-Blacky Assistant is a personal Python learning and development project.
-
----
-
-> 🖤 **Blacky Assistant — built with Python, one feature at a time.**
+These are development ideas, not completed features or delivery commitments.

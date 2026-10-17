@@ -1,12 +1,12 @@
-#I have no clue how I wrote that code
-total_hours_wasted = 11
-#Blacky Assisstant v0.3.2
+"""Tkinter learning project: calculator, system information and command runner."""
 import tkinter as tk
 import tkinter
 import platform
 import psutil
 import socket
 import subprocess
+
+APP_VERSION = "0.4.0"
 def clear_screen():
     for widget in window.winfo_children():
         widget.destroy()
@@ -78,9 +78,8 @@ def calculator():
     button_homee = tkinter.Button(window_calculator, text="HOME", width=10, bg="white", fg="black",command=window_calculator.destroy)
     button_homee.place(x=0, y=0)
 def notes():
-    print("Notes button working")
+    print("Notes are not implemented yet.")
 def terminal():
-    print("Terminal button working")
     terminal_window = tk.Toplevel(window)
     terminal_window.title("Blacky Terminal")
     terminal_window.geometry("600x600")
@@ -138,17 +137,17 @@ def information():
     button_terminal.destroy()
     button_informations.destroy()
     info_window = tk.Toplevel()
-    info_window.title("Blacky Assisstant - Information")
+    info_window.title("Blacky Assistant - Information")
     info_window.geometry("900x720")
     button_homeee = tkinter.Button(info_window, text="HOME", width=10, bg="white", fg="black",command=info_window.destroy)
     button_homeee.place(x=0, y=0)
 
     system_info = f"""
-BLACKY ASSISSTANT
+BLACKY ASSISTANT
 ===============================
 
-BLACKY ASSISSTANT INFORMATION
-VERSION: 0.4.0
+APPLICATION INFORMATION
+VERSION: {APP_VERSION}
 STATUS: Running
 GUI: Tkinter
 Python: {platform.python_version()}
@@ -196,7 +195,7 @@ Disk Free: {round(psutil.disk_usage('/').free / (1024**3), 2)} GB
     )
 
 def startba():
-    button_knock = tk.Button(window,text="KNOCKOUT",bg="red",fg="black",command=window.destroy)
+    button_knock = tk.Button(window,text="Exit",bg="red",fg="black",command=window.destroy)
     button_knock.place(x=200,y=450)
     global button_notes
     global button_informations
@@ -216,13 +215,13 @@ def startba():
 
 
 window = tk.Tk()
-window.title("Blacky Assisstant")
+window.title("Blacky Assistant")
 window.geometry("600x600")
-label_blackyassisstant = tk.Label(window, text="Blacky Assisstant")
+label_blackyassisstant = tk.Label(window, text="Blacky Assistant")
 label_blackyassisstant.place(x=200, y=10)
-label_welcome = tk.Label(window, text="Welcome to Blacky Assisstant")
+label_welcome = tk.Label(window, text="Welcome to Blacky Assistant")
 label_welcome.place(x=170, y=50)
-button_start = tk.Button(window,text="Start Blacky Assisstant v0.2.0",bg="black",fg="white",command=startba)
+button_start = tk.Button(window,text=f"Start Blacky Assistant v{APP_VERSION}",bg="black",fg="white",command=startba)
 button_start.place(x=200, y=250)
 
 
