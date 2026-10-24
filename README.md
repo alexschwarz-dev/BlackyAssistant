@@ -28,8 +28,8 @@ is platform-specific; compatibility with every operating system is not claimed.
 ## Installation and launch
 
 ```sh
-git clone https://github.com/alexschwarz-dev/BlackyAssisstant.git
-cd BlackyAssisstant
+git clone https://github.com/alexschwarz-dev/BlackyAssistant.git
+cd BlackyAssistant
 ```
 
 Create a virtual environment and use its Python executable directly. Activation
@@ -70,7 +70,7 @@ or information window does not restore the menu buttons automatically; use
 ## Repository structure
 
 ```text
-BlackyAssisstant/
+BlackyAssistant/
 |-- main.py                       # Interface and application logic
 |-- requirements.txt              # Third-party runtime dependency
 |-- README.md
@@ -79,9 +79,6 @@ BlackyAssisstant/
 `-- tests/
     `-- test_project_metadata.py  # Setup and documentation checks
 ```
-
-The repository path retains its existing spelling; the displayed project name
-is **Blacky Assistant**.
 
 ## Checks
 
@@ -92,7 +89,7 @@ python -m unittest discover -s tests
 python -m py_compile main.py
 ```
 
-Replace `python` with `.\.venv\Scripts\python.exe` on Windows or
+Replace `python` with `.\\.venv\\Scripts\\python.exe` on Windows or
 `./.venv/bin/python` on Linux when the environment is not activated.
 The existing tests cover project metadata only. They do not establish GUI
 correctness, calculator correctness or cross-platform compatibility. Importing
